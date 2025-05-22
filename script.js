@@ -77,14 +77,14 @@ function displayBook(book) {
   myBook.className = "book-card";
   myBook.id = book.id;
   removeBtn.className = "remove-book-btn";
-  toggleReadBtn.className = "toggle-status-btn";
+  toggleReadBtn.className = "button toggle-status-btn";
 
   removeBtn.textContent = "x";
   toggleReadBtn.textContent = book.isRead ? "Mark as unread" : "Mark as read";
 
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
-  bookPages.textContent = book.pages;
+  bookPages.textContent = `${book.pages} pages`;
   bookStatus.textContent = book.isRead ? "Already read!" : "Not read yet";
 
   toggleReadBtn.addEventListener("click", () => {
@@ -121,7 +121,7 @@ addBookToLibrary(
 addBookToLibrary("The Woman in me", "Britney Spears", 288, false);
 addBookToLibrary("El Principito", "Antoine de Saint-Exupéry", 100, true);
 addBookToLibrary("Toma hierro para la anemia", "Oriana", 200, true);
-addBookToLibrary("Web Cam 1080", "Logitech", 1254, false);
+addBookToLibrary("How to buy a web cam", "Logitech", 1254, false);
 
 displayLibrary();
 
