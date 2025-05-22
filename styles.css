@@ -35,6 +35,8 @@ body{
 
 .layout-container{
     display: grid;
+    min-height: 100vh;
+    
 }
 
 .library-greeting-container{
