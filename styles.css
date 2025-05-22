@@ -1,3 +1,107 @@
+/* ---Light CSS Reset--- */
+html {
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto; }
+
+/* ---Custom properties--- */
+:root{
+    --transition-default: all 0.2s ease;
+}
+html,
 body{
-    background-color: violet;
+    height: 100%;
+    font-family: "Roboto", sans-serif;
+}
+
+.layout-container{
+    display: grid;
+}
+
+.library-container{
+    border: 1px solid green;
+}
+
+.library-greeting{
+    justify-self: center;
+}
+
+.book-card{
+    display: flex;
+    flex-direction: column;
+    min-height: 20vh;
+    border: 1px solid black;
+}
+
+.remove-book-btn{
+    align-self: flex-end;
+}
+
+.toggle-status-btn {
+    align-self: flex-start;
+}
+
+
+@media only screen and (min-width: 725px){
+    .layout-container {
+        display: grid;
+        justify-items: center;
+    }
+
+   .library-container{
+        width: 75%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        justify-items: center;
+        gap: 1em;
+   }
+
+   .book-card{
+        max-width: 250px;
+        width: 100%;
+        min-height: 35vh;
+        padding: 2em;
+        border: 2px solid black;
+        margin-bottom: 3rem;
+    }
+
+    .book-card>h2,
+    .book-card>p{
+        text-align: center;
+    }
+
+    .toggle-status-btn{
+        align-self: center;
+        margin-top: auto;
+    }
 }
