@@ -120,6 +120,8 @@ addBookToLibrary(
 );
 addBookToLibrary("The Woman in me", "Britney Spears", 288, false);
 addBookToLibrary("El Principito", "Antoine de Saint-Exupéry", 100, true);
+addBookToLibrary("Toma hierro para la anemia", "Oriana", 200, true);
+addBookToLibrary("Web Cam 1080", "Logitech", 1254, false);
 
 displayLibrary();
 
