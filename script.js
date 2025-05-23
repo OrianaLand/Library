@@ -7,6 +7,8 @@ const titleInput = document.querySelector("#title");
 const authorInput = document.querySelector("#author");
 const pagesInput = document.querySelector("#pages");
 const readInput = document.querySelector("#read");
+const dialog = document.querySelector("dialog");
+const closeDialogBtn = document.querySelector(".close-dialog-btn");
 
 function Book(title, author, pages, read) {
   if (!new.target) {
@@ -126,15 +128,12 @@ addBookToLibrary("How to buy a web cam", "Logitech", 1254, false);
 displayLibrary();
 
 addNewBookBtn.addEventListener("click", () => {
-  const isHidden = addBookForm.hasAttribute("hidden");
-  if (isHidden) {
-    addBookForm.removeAttribute("hidden");
-    addNewBookBtn.textContent = "Cancel";
-  } else {
-    addBookForm.reset();
-    addBookForm.setAttribute("hidden", "");
-    addNewBookBtn.textContent = "Add new Book!";
-  }
+  dialog.showModal();
+});
+
+closeDialogBtn.addEventListener("click", () => {
+  dialog.close();
+  addBookForm.reset();
 });
 
 addBookForm.addEventListener("submit", function (event) {
@@ -160,6 +159,8 @@ addBookForm.addEventListener("submit", function (event) {
     addBookForm.setAttribute("hidden", "");
     addNewBookBtn.textContent = "Add new Book!";
   }
+
+  dialog.close();
 });
 
 container.addEventListener("click", (event) => {
