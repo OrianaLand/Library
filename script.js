@@ -156,7 +156,6 @@ addBookForm.addEventListener("submit", function (event) {
     //Reset form
 
     addBookForm.reset();
-    addBookForm.setAttribute("hidden", "");
     addNewBookBtn.textContent = "Add new Book!";
   }
 
@@ -167,5 +166,13 @@ container.addEventListener("click", (event) => {
   if (event.target.classList.contains("remove-book-btn")) {
     const bookId = event.target.parentElement.id;
     removeBook(bookId);
+  }
+});
+
+//Close modal when clicking outside of it
+dialog.addEventListener("click", (event) => {
+  if (event.target === dialog) {
+    addBookForm.reset();
+    dialog.close();
   }
 });
