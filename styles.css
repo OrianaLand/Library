@@ -41,6 +41,8 @@ body{
 
 .library-greeting-container{
     background-color: #efdecd;
+    max-height: 15vh;
+    align-content: center;
 }
 
 .library-greeting{
@@ -108,6 +110,7 @@ body{
     justify-self: center;
     margin: 1.5rem 0;
     transition: var(--transition-default);
+    max-height: 3rem;
 }
 
 
