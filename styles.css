@@ -112,7 +112,49 @@ body{
 
 
 ::backdrop {
-    background-color: #000000CC; }
+    background-color: #000000CC;
+}
+
+form {
+    padding: 1rem;
+}
+
+form>h3,
+.form-input{
+    justify-self: center;
+    margin-bottom: 1.5rem;
+}
+
+.form-input{
+    position: relative;
+}
+
+.form-input>button{
+    width: 8rem;
+}
+
+input{
+    padding: .75rem 0;
+}
+
+.input-text-label {
+    position: absolute;
+    transition: 0.3s ease;
+    left: 0.5rem;
+    margin-top: 1.5px;
+    font-size: calc(8px + 1vh);
+    z-index: 10;
+}
+
+input:focus~label,
+input:valid~label{
+    bottom: 2.25rem;
+    padding-left: 0.1rem;
+    background: white;
+    font-size: calc(8px + .75vh);
+    padding-right: 0.25rem;
+    border-radius: 0.125rem;
+}
 
 
 @media only screen and (min-width: 725px){

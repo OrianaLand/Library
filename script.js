@@ -114,7 +114,7 @@ function displayLibrary() {
   myLibrary.forEach(displayBook);
 }
 
-addBookToLibrary(
+/* addBookToLibrary(
   "The Ballad of Songbirds and Snakes",
   "Suzanne Collins",
   528,
@@ -125,10 +125,11 @@ addBookToLibrary("El Principito", "Antoine de Saint-Exupéry", 100, true);
 addBookToLibrary("Toma hierro para la anemia", "Oriana", 200, true);
 addBookToLibrary("How to buy a web cam", "Logitech", 1254, false);
 
-displayLibrary();
+displayLibrary(); */
 
 addNewBookBtn.addEventListener("click", () => {
   dialog.showModal();
+  document.getElementById("dummy-focus").focus();
 });
 
 closeDialogBtn.addEventListener("click", () => {

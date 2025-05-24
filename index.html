@@ -21,20 +21,21 @@
       <div class="library-container"></div>
       <dialog>
         <form action="" method="get" class="add-book-form">
+          <h3>New book</h3>
           <div class="form-input">
-            <label for="title">Title: </label>
             <input type="text" name="title" id="title" required />
+            <label for="title" class="input-text-label">Title: </label>
           </div>
           <div class="form-input">
-            <label for="author">Author: </label>
             <input type="text" name="author" id="author" required />
+            <label for="author" class="input-text-label">Author: </label>
           </div>
           <div class="form-input">
-            <label for="pages">Pages: </label>
             <input type="number" name="pages" id="pages" required />
+            <label for="pages" class="input-text-label">Pages: </label>
           </div>
           <div class="form-input">
-            <label for="read">Check the box if you've read it!</label>
+            <label for="read" class=>Check the box if you've read it!</label>
             <input type="checkbox" id="read" name="read" />
           </div>
           <div class="form-input">
@@ -44,6 +45,8 @@
             <button class="button close-dialog-btn" type="button">
               Cancel
             </button>
+            <div id="dummy-focus" tabindex="-1" style="position:absolute; opacity:0; pointer-events:none;"></div>
+
           </div>
         </form>
       </dialog>
