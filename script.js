@@ -67,8 +67,9 @@ function removeBook(id) {
   }
 }
 
-function displayBook(book) {
-  const myBook = document.createElement("div");
+function createBookCardElement(book) {
+  // Create all DOM elements
+  const bookCard = document.createElement("div");
   const bookTitle = document.createElement("h2");
   const bookAuthor = document.createElement("p");
   const bookPages = document.createElement("p");
@@ -76,27 +77,22 @@ function displayBook(book) {
   const removeBtn = document.createElement("button");
   const toggleReadBtn = document.createElement("button");
 
-  myBook.className = "book-card";
-  myBook.id = book.id;
+  // Set up classes and IDs
+  bookCard.className = "book-card";
+  bookCard.id = book.id;
   removeBtn.className = "remove-book-btn";
   toggleReadBtn.className = "button toggle-status-btn";
 
-  removeBtn.textContent = "x";
-  removeBtn.ariaLabel = "Delete book from library";
-  toggleReadBtn.textContent = book.isRead ? "Mark as unread" : "Mark as read";
-
+  // Set content
   bookTitle.textContent = book.title;
   bookAuthor.textContent = book.author;
   bookPages.textContent = `${book.pages} pages`;
   bookStatus.textContent = book.isRead ? "Already read!" : "Not read yet";
+  removeBtn.textContent = "x";
+  toggleReadBtn.textContent = book.isRead ? "Mark as unread" : "Mark as read";
 
-  toggleReadBtn.addEventListener("click", () => {
-    book.toggleReadStatus();
-    bookStatus.textContent = book.isRead ? "Already read!" : "Not read yet";
-    toggleReadBtn.textContent = book.isRead ? "Mark as unread" : "Mark as read";
-  });
-
-  myBook.append(
+  // Assemble the card
+  bookCard.append(
     removeBtn,
     bookTitle,
     bookAuthor,
@@ -104,7 +100,31 @@ function displayBook(book) {
     bookStatus,
     toggleReadBtn
   );
-  container.appendChild(myBook);
+
+  return { bookCard, bookStatus, toggleReadBtn };
+}
+
+function attachBookCardEvents(book, bookStatus, toggleReadBtn) {
+  toggleReadBtn.addEventListener("click", () => {
+    book.toggleReadStatus();
+    updateBookStatusDisplay(book, bookStatus, toggleReadBtn);
+  });
+}
+
+function updateBookStatusDisplay(book, bookStatus, toggleReadBtn) {
+  bookStatus.textContent = book.isRead ? "Already read!" : "Not read yet";
+  toggleReadBtn.textContent = book.isRead ? "Mark as unread" : "Mark as read";
+}
+
+function displayBook(book) {
+  // Create the card structure
+  const { bookCard, bookStatus, toggleReadBtn } = createBookCardElement(book);
+
+  // Attach event listeners
+  attachBookCardEvents(book, bookStatus, toggleReadBtn);
+
+  // Add to DOM
+  container.appendChild(bookCard);
 }
 
 function displayLibrary() {
