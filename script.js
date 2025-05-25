@@ -82,6 +82,7 @@ function displayBook(book) {
   toggleReadBtn.className = "button toggle-status-btn";
 
   removeBtn.textContent = "x";
+  removeBtn.ariaLabel = "Delete book from library";
   toggleReadBtn.textContent = book.isRead ? "Mark as unread" : "Mark as read";
 
   bookTitle.textContent = book.title;

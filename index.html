@@ -35,22 +35,35 @@
             <label for="pages" class="input-text-label">Pages: </label>
           </div>
           <div class="form-input">
-            <label for="read" class=>Check the box if you've read it!</label>
+            <label for="read">Check the box if you've read it!</label>
             <input type="checkbox" id="read" name="read" />
           </div>
           <div class="form-input">
-            <button class="button add-to-library-btn" type="submit">
+            <button
+              class="button add-to-library-btn"
+              type="submit"
+              aria-label="Add book to library"
+            >
               Add to library
             </button>
-            <button class="button close-dialog-btn" type="button">
+            <button
+              class="button close-dialog-btn"
+              type="button"
+              aria-label="Cancel"
+            >
               Cancel
             </button>
-            <div id="dummy-focus" tabindex="-1" style="position:absolute; opacity:0; pointer-events:none;"></div>
-
+            <div
+              id="dummy-focus"
+              tabindex="-1"
+              style="position: absolute; opacity: 0; pointer-events: none"
+            ></div>
           </div>
         </form>
       </dialog>
-      <button class="button add-new-book-btn">Add new book!</button>
+      <button class="button add-new-book-btn" aria-label="Add new book">
+        Add new book!
+      </button>
     </div>
 
     <script src="script.js"></script>
