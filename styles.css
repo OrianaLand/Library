@@ -34,9 +34,7 @@ body{
 }
 
 .layout-container{
-    display: grid;
     min-height: 100vh;
-    
 }
 
 .library-greeting-container{
@@ -49,6 +47,16 @@ body{
     justify-self: center;
     padding: 2rem;
     font-weight: bold;
+}
+
+.library-container{
+    min-height: 30VH;
+}
+
+.layout-container,
+.library-container {
+    display: flex;
+    flex-direction: column;
 }
 
 .book-card{
@@ -107,7 +115,7 @@ body{
 }
 
 .add-new-book-btn{
-    justify-self: center;
+    align-self: center;
     margin: 1.5rem 0;
     transition: var(--transition-default);
     max-height: 3rem;
@@ -167,6 +175,7 @@ input:valid~label{
     }
 
     .layout-container {
+        display: grid;
         justify-items: center;
         border: 4px solid #63372B;
         border-radius: 30px;
