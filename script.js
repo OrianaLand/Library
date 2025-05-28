@@ -64,6 +64,10 @@ function removeBook(id) {
     if (bookCard) {
       bookCard.remove();
     }
+
+    if (myLibrary.length === 0) {
+      displayLibrary();
+    }
   }
 }
 
@@ -131,6 +135,14 @@ function displayLibrary() {
   // Clear existing display
   container.innerHTML = "";
 
+  if (myLibrary.length === 0) {
+    const placeholder = document.createElement("p");
+    placeholder.textContent = "Your library is empty. Add a book!";
+    placeholder.className = "empty-library-msg";
+    container.appendChild(placeholder);
+    return;
+  }
+
   // Display each book
   myLibrary.forEach(displayBook);
 }
@@ -174,7 +186,8 @@ addBookForm.addEventListener("submit", function (event) {
   const newBook = addBookToLibrary(title, author, pages, isRead);
 
   if (newBook) {
-    displayBook(newBook);
+    displayLibrary();
+    /* displayBook(newBook); */
     //Reset form
 
     addBookForm.reset();
@@ -198,3 +211,5 @@ dialog.addEventListener("click", (event) => {
     dialog.close();
   }
 });
+
+displayLibrary();
