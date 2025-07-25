@@ -49,6 +49,10 @@ body{
     font-weight: bold;
 }
 
+.empty-library-msg{
+    text-align: center;
+}
+
 .library-container{
     min-height: 30VH;
 }
