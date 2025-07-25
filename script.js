@@ -10,28 +10,6 @@ const readInput = document.querySelector("#read");
 const dialog = document.querySelector("dialog");
 const closeDialogBtn = document.querySelector(".close-dialog-btn");
 
-/* function Book(title, author, pages, read) {
-  if (!new.target) {
-    throw Error("You must use the 'new' operator to call the constructor");
-  }
-
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.isRead = read;
-  this.id = crypto.randomUUID();
-} */
-
-/* Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.pages} pages, ${
-    this.isRead ? "Already read!" : "Not read yet"
-  }`;
-};
-
-Book.prototype.toggleReadStatus = function () {
-  this.isRead = !this.isRead;
-}; */
-
 class Book {
   constructor(title, author, pages, read) {
     this.title = title;
@@ -166,19 +144,6 @@ function displayLibrary() {
   // Display each book
   myLibrary.forEach(displayBook);
 }
-
-/* addBookToLibrary(
-  "The Ballad of Songbirds and Snakes",
-  "Suzanne Collins",
-  528,
-  false
-);
-addBookToLibrary("The Woman in me", "Britney Spears", 288, false);
-addBookToLibrary("El Principito", "Antoine de Saint-Exupéry", 100, true);
-addBookToLibrary("Toma hierro para la anemia", "Oriana", 200, true);
-addBookToLibrary("How to buy a web cam", "Logitech", 1254, false);
-
-displayLibrary(); */
 
 addNewBookBtn.addEventListener("click", () => {
   dialog.showModal();
