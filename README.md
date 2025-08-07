@@ -1,6 +1,7 @@
 # Library App
 
-[![Live Demo](https://img.shields.io/badge/demo-live-green)](https://orianaland.github.io/Library/)  
+## 🔗 [Live Demo](https://orianaland.github.io/Library/)
+
 ![GitHub](https://img.shields.io/badge/license-MIT-blue.svg)  
 ![GitHub last commit](https://img.shields.io/github/last-commit/orianaland/Library)  
 ![GitHub repo size](https://img.shields.io/github/repo-size/orianaland/Library)
