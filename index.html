@@ -23,16 +23,19 @@
         <form action="" method="get" class="add-book-form">
           <h3>New book</h3>
           <div class="form-input">
-            <input type="text" name="title" id="title" required />
+            <input type="text" name="title" id="title" placeholder=" " />
             <label for="title" class="input-text-label">Title: </label>
+            <span id="title-error" aria-live="polite"></span>
           </div>
           <div class="form-input">
-            <input type="text" name="author" id="author" required />
+            <input type="text" name="author" id="author" placeholder=" " />
             <label for="author" class="input-text-label">Author: </label>
+            <span id="author-error" aria-live="polite"></span>
           </div>
           <div class="form-input">
-            <input type="number" name="pages" id="pages" required />
+            <input type="number" name="pages" id="pages" placeholder=" " />
             <label for="pages" class="input-text-label">Pages: </label>
+            <span id="pages-error" aria-live="polite"></span>
           </div>
           <div class="form-input">
             <label for="read">Check the box if you've read it!</label>

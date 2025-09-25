@@ -4,11 +4,35 @@ const addNewBookBtn = document.querySelector(".add-new-book-btn");
 const addBookForm = document.querySelector(".add-book-form");
 const addToLibraryBtn = document.querySelector(".add-to-library-btn");
 const titleInput = document.querySelector("#title");
+const titleError = document.querySelector("#title-error");
 const authorInput = document.querySelector("#author");
+const authorError = document.querySelector("#author-error");
 const pagesInput = document.querySelector("#pages");
+const pagesError = document.querySelector("#pages-error");
 const readInput = document.querySelector("#read");
 const dialog = document.querySelector("dialog");
 const closeDialogBtn = document.querySelector(".close-dialog-btn");
+
+const validators = {
+  title: {
+    input: titleInput,
+    errorEl: titleError,
+    validate: (val) => val.trim() !== "",
+    message: "Title can't be empty!",
+  },
+  author: {
+    input: authorInput,
+    errorEl: authorError,
+    validate: (val) => val.trim() !== "",
+    message: "Author can't be empty!",
+  },
+  pages: {
+    input: pagesInput,
+    errorEl: pagesError,
+    validate: (val) => Number(val) > 0,
+    message: "Pages must be 1 or more!",
+  },
+};
 
 class Book {
   constructor(title, author, pages, read) {
@@ -145,37 +169,63 @@ function displayLibrary() {
   myLibrary.forEach(displayBook);
 }
 
+function showErrorMsg(errorElement, message) {
+  errorElement.textContent = message;
+  errorElement.classList.add("error", "active");
+}
+
+function resetErrorMsg(errorElement) {
+  errorElement.textContent = "";
+  errorElement.classList.remove("error", "active"); // Removes the `active` class
+}
+
+function validateInputs() {
+  let isValid = true;
+
+  for (const key in validators) {
+    const { input, errorEl, validate, message } = validators[key];
+    if (validate(input.value)) {
+      resetErrorMsg(errorEl);
+    } else {
+      showErrorMsg(errorEl, message);
+      isValid = false;
+    }
+  }
+  return isValid;
+}
+
 addNewBookBtn.addEventListener("click", () => {
   dialog.showModal();
   document.getElementById("dummy-focus").focus();
 });
 
-closeDialogBtn.addEventListener("click", () => {
-  dialog.close();
-  addBookForm.reset();
+addBookForm.addEventListener("input", (event) => {
+  const field = validators[event.target.id];
+  if (!field) return; // Not a tracked input
+
+  if (field.validate(event.target.value)) {
+    resetErrorMsg(field.errorEl);
+  } else {
+    showErrorMsg(field.errorEl, field.message);
+  }
 });
 
 addBookForm.addEventListener("submit", function (event) {
-  event.preventDefault(); // Prevents the form from being submitted / page reload
+  event.preventDefault(); // Prevent default form submission behavior
+  if (!validateInputs()) {
+    return;
+  }
 
+  //Once inputs are valid, save their values
   const title = titleInput.value.trim();
   const author = authorInput.value.trim();
   const pages = parseInt(pagesInput.value, 10);
   const isRead = readInput.checked;
-
-  if (!title || !author || isNaN(pages) || pages <= 0) {
-    alert("Please fill in all fields correctly.");
-    return;
-  }
-
   const newBook = addBookToLibrary(title, author, pages, isRead);
 
   if (newBook) {
     displayLibrary();
-    /* displayBook(newBook); */
-    //Reset form
-
-    addBookForm.reset();
+    addBookForm.reset(); //Reset form
     addNewBookBtn.textContent = "Add new Book!";
   }
 
@@ -189,10 +239,30 @@ container.addEventListener("click", (event) => {
   }
 });
 
-//Close modal when clicking outside of it
+dialog.addEventListener("close", () => {
+  addBookForm.reset();
+  for (const key in validators) {
+    const errorEl = validators[key].errorEl;
+    resetErrorMsg(errorEl);
+  }
+});
+
+// Listen for when the dialog closes (regardless of how)
+dialog.addEventListener("close", () => {
+  addBookForm.reset();
+  for (const key in validators) {
+    const errorEl = validators[key].errorEl;
+    resetErrorMsg(errorEl);
+  }
+});
+
+// Simplified event listeners - just close the dialog
+closeDialogBtn.addEventListener("click", () => {
+  dialog.close();
+});
+
 dialog.addEventListener("click", (event) => {
   if (event.target === dialog) {
-    addBookForm.reset();
     dialog.close();
   }
 });
